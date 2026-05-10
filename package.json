@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Roblox age verification bypass",
   "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev"
+  },
   "dependencies": {}
 }
